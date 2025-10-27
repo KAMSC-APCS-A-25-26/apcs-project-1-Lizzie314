@@ -9,7 +9,7 @@ public class TextAdventure
 
         // Declare Variables
         boolean selectOption = true;
-        int gameOption;
+        String gameOption;
 
         // Welcome Screen
         while (selectOption)
@@ -19,7 +19,7 @@ public class TextAdventure
             System.out.println("1. Play");
             System.out.println("2. Game Premise");
             System.out.println("3. Exit");
-            gameOption = sc.nextInt();
+            gameOption = sc.nextLine();
         }
 
         // Game Mode Selection
