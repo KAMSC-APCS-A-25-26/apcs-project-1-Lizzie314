@@ -4,34 +4,28 @@ public class TextAdventure
 {
     public static void main(String[] args)
     {
+        // Initialize/Create Scanner
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to Galaxy Village Adventure");
-        boolean run = true;
-        while (run)
+
+        // Declare Variables
+        boolean selectOption = true;
+        int gameOption;
+
+        // Welcome Screen
+        while (selectOption)
         {
-            System.out.print("Are you ready (Y/N)?: ");
-            String ready = sc.nextLine();
-            if (ready.equals("Y")) {
-                System.out.println("Choose an option: ");
-                System.out.println("1. Play");
-                System.out.println("2. Game Premise");
-                System.out.println("3. Exit Game");
-                int choice = sc.nextInt();
-                switch (choice) {
-                    case 1:
-                    case 2:
-                    case 3:
-                    default:
-                }
-            }
-            else if (ready.equals("N"))
-            {
-                System.out.println("Come on!  It'll be fun!");
-            }
-            else
-            {
-                System.out.println("Please enter a valid choice");
-            }
+            System.out.println("Welcome to Elf Enchanted");
+            System.out.println("Please select an option: ");
+            System.out.println("1. Play");
+            System.out.println("2. Game Premise");
+            System.out.println("3. Exit");
+            gameOption = sc.nextInt();
         }
+
+        // Game Mode Selection
+        System.out.println("Please Choose a Game Mode: ");
+        System.out.println("1. Crystal Mountain");
+        System.out.println("2. Magic Forest");
+        System.out.println("3. City Quest");
     }
 }
