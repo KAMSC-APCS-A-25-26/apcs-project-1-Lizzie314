@@ -1,11 +1,17 @@
+import javax.swing.*;
 import java.util.Scanner;
 
 public class TextAdventure
 {
+    static void invalidInput()
+    {
+        System.out.println("Please enter a valid input");
+    }
     public static void main(String[] args)
     {
         // Initialize/Create Scanner
         Scanner sc = new Scanner(System.in);
+
 
         // Declare Variables
         boolean playing = true;
@@ -14,16 +20,53 @@ public class TextAdventure
         boolean selecting = true;
         String wantSidekick;
         String animalSidekick;
+        String wantItem;
+        String item;
+        String replay;
+        int crystals;
         int health;
         int power;
+        boolean replayOptions = true;
+        String shinyObjectInvestigate;
 
+
+        // Welcome Screen
+        System.out.println("Welcome to Elf Enchanted");
+        System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⢀⣠⣤⠴⠶⠶⠒⠒⠒⠒⠒⠶⠶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢶⣄⠀⣠⠴⠚⠛⠳⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠛⠉⠛⣶⠞⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠦⣄⠀⠀⠀⠀⠀⠀⠈⠻⡅⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡟⠁⠈⣹⠞⠁⠀⢀⣴⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢦⡀⠀⠀⠀⠀⠀⠈⢶⣄⠀⠀⠀⠀⢷⡄⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⣠⠏⠀⢀⠞⠁⠀⠀⣠⠟⠁⠀⠀⠀⠀⠀⠀⣦⠀⠀⡀⠀⠀⠀⠀⠀⠀⡙⢄⠀⠀⠀⠀⠀⢢⢫⠳⡀⠀⠀⠈⣷⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢠⠏⠀⠀⠀⣴⠋⠀⠀⢀⠆⠀⠀⠀⣼⠋⠳⡄⠙⣦⡀⠀⠀⠀⠀⠈⠈⢣⠀⠀⠀⠀⠀⠀⢧⡱⡀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⡾⠀⢀⠏⠀⠀⠀⢠⠇⠀⠀⢀⡞⠀⡴⢁⣼⠏⠀⠀⠈⠲⣌⠻⣦⣄⠀⠀⠀⠀⠀⢧⠀⠀⠀⠀⠀⠘⣷⢡⠀⠀⠀⣷⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⢸⠇⠀⡜⠀⠀⠀⠀⡼⠀⠀⣠⡟⣠⠎⣠⠞⠁⠀⠀⠀⠀⠀⠀⣙⡪⢵⡷⣤⣀⠀⠀⢘⡄⠀⠀⠀⠀⠀⠇⢇⡆⠀⠀⢹⡄⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⣼⠀⢀⠃⠀⠀⠀⠀⡇⢀⢴⣯⣞⠷⠛⢳⡄⠀⠀⠀⠀⠀⠀⠘⠤⠤⠤⠚⠋⠛⠻⠴⢆⡇⠀⠀⠀⠀⠀⢸⢸⢰⠀⠀⢸⡇⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⣿⠀⢸⠀⠀⠀⠀⠀⣯⠵⠛⠉⠉⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⢀⡇⠀⢠⢸⣿⠸⠀⠀⠸⡇⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⡇⠀⢸⠀⡀⠀⡆⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⡀⠀⡀⠀⠸⡇⠀⢸⡸⠯⠐⠒⠒⠒⠓⠒⠒⠒⠲⡄\n" +
+                        "⠀⢀⣀⣀⣤⣤⡇⠠⢼⠀⡇⠀⣷⠀⢹⠀⢀⣤⣤⣤⣴⣶⣦⠀⠀⠀⠀⠀⠀⠀⠸⠿⠿⠿⠟⠛⠛⠃⠀⡇⢀⠇⠇⠀⡇⡧⠔⢖⢩⠉⠉⠓⠤⠋⣠⠞⠁\n" +
+                        "⠐⣯⡉⢠⡔⣒⣢⠤⡬⡆⣿⠀⢣⢇⠘⡄⠈⠋⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⡠⠀⢠⢃⠎⡸⠀⡸⣿⠀⠀⣸⡜⠀⠀⣀⡴⠛⠁⠀⠀\n" +
+                        "⠀⠀⠙⠲⣌⡀⠀⠱⣣⢣⡏⢧⠈⡎⣆⢣⠰⠡⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡮⠋⢸⠁⣰⣻⣛⡠⠤⠛⣀⠤⠚⣿⠁⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⢹⡗⢤⣉⠫⠧⠼⢧⠘⣟⡿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⣸⡔⢱⡎⣳⡠⠔⠊⠁⠀⠀⢿⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⢸⡇⠀⠈⢹⠒⠴⣅⣱⣽⣧⠀⠀⠀⠀⠀⠀⠀⠀⠦⠤⠔⠤⠤⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣶⠒⢉⠁⠀⠀⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⣿⠀⠀⠀⢸⠀⢠⢄⠀⠀⠈⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠟⠁⣿⠀⡇⡇⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⡞⣾⠀⠀⠀⢸⣷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣟⠁⠀⠀⣿⠀⣟⡇⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⡿⢀⡆⠀⠀⠀⠀⡏⢹⠀⠀⠀⢸⠇⠈⣻⢶⠦⢄⣀⣀⠀⠀⠀⠀⠀⣀⣠⣤⡶⠿⠒⢋⣿⠀⠀⠀⣿⠀⡏⡇⠀⠀⠀⠀⢠⡆⠸⡇⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⣸⠇⣼⠀⠀⠀⠀⠀⠸⠜⠀⠀⠀⣿⣀⣀⣻⡤⡽⢛⡉⠛⠛⠛⠛⠉⣉⣉⣉⠤⠤⠒⠊⡡⣿⡴⠶⢚⠛⠢⡕⠁⠀⠀⢠⠀⢸⢡⠀⣿⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⣿⢰⣿⠀⠀⢀⢀⠀⠀⠀⠀⠀⢠⡿⠋⢉⡙⡧⡇⢸⣴⢶⣯⡉⠉⠀⠀⠀⠀⠀⢀⠤⠊⡠⠟⡦⠖⠁⠀⠀⠘⢆⡀⠀⡈⠀⡌⣸⠀⣿⠀⠀⠀⠀\n" +
+                        "⠀⠀⢨⡇⣾⣿⠀⠀⣿⢸⠀⠀⣠⠔⠒⠉⠀⠀⠈⢿⡳⡏⢸⣧⣋⣼⠇⠀⠀⢀⣀⠤⢊⡡⢔⡫⠔⠉⠀⠀⠀⠀⠀⠀⠀⠉⠓⢧⣠⠃⣿⡇⡇⠀⠀⠀⠀\n" +
+                        "⠀⠀⢸⡇⣿⣿⠀⠀⠇⡞⡤⠺⡁⠀⠀⠀⠀⠀⠀⠀⠙⠣⢌⡚⠭⠵⠦⠤⢬⣕⡲⠭⠓⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠠⠤⠽⣤⣿⡇⣷⠀⠀⠀⠀\n" +
+                        "⠀⠀⢸⡇⣇⢿⡄⠀⢠⣼⠾⣦⡙⢦⡀⠀⠀⠀⢀⡤⣤⠤⠌⠚⠛⠓⠊⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⢒⣩⡴⠶⠛⠙⢿⣿⢱⡏⠀⠀⠀⠀\n" +
+                        "⠀⠀⠘⣇⣿⠘⢧⣠⡞⠁⠀⠈⠛⢦⣉⠲⠤⣀⡜⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⠒⣩⡴⠞⠉⠀⠀⠀⠀⠀⠀⠹⣿⡀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠹⣼⣇⣾⠋⠀⠀⠀⠀⠀⠀⠙⠷⡒⠤⢇⡈⠒⠤⢄⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡠⠤⠒⣉⣤⠶⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣷⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⢈⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢱⡞⢼⠗⢶⣤⣤⣀⣉⣉⣉⣉⣉⣉⡥⢤⡲⣺⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⣸⠓⢦⢻⡏⠉⠉⠀⠀⠀⠐⠈⠉⣹⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠃⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⣾⠀⣿⠀⠀⠱⣽⣆⠀⠀⠀⠀⠀⠀⠀⢹⠀⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠿⢾⣶⣤⣤⡿⢀⡏⢀⣀⠀⠙⠛⠀⠀⠀⠀⠀⠀⠀⢸⠀⠈⠀⢀⣀⣄⣀⣤⡄⣤⣶⡯⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠚⠓⠛⠿⠿⠿⠯⠿⠷⠿⠶⠾⠾⠿⠿⠤⠾⠭⠿⠛⠓⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ");
         // Game
         while (playing)
         {
-            // Welcome Screen
-            System.out.println("Welcome to Elf Enchanted");
-
-            System.out.println("Please select an option: ");
+            System.out.println("\nPlease select an option: ");
             System.out.println("1. Play");
             System.out.println("2. Game Premise");
             System.out.println("3. Exit");
@@ -75,7 +118,7 @@ public class TextAdventure
                             }
                             else
                             {
-                                System.out.println("Please enter a valid input");
+                                invalidInput();
                             }
                         }
                         else if (wantSidekick.equals("N"))
@@ -84,14 +127,129 @@ public class TextAdventure
                         }
                         else
                         {
-                            System.out.println("Please enter a valid input");
+                            invalidInput();
                         }
 
                         System.out.print("\nWould you like to choose an item? (Y/N): ");
+                        wantItem = sc.nextLine();
+                        if (wantItem.equals("Y"))
+                        {
+                            System.out.println("These are the different items you can have: ");
+                            System.out.println("1. Wand");
+                            System.out.println("2. Potion");
+                            System.out.println("3. Spellbook");
+                            System.out.print("Which item do you want?: ");
+                            item = sc.nextLine();
+                            if (item.equals("1"))
+                            {
+                                power += 60;
+                            }
+                            else if (item.equals("2"))
+                            {
+                                power += 30;
+                            }
+                            else if (item.equals("3"))
+                            {
+                                power += 50;
+                            }
+                            else
+                            {
+                                invalidInput();
+                            }
+                        }
+                        else if (wantItem.equals("N"))
+                        {
+                            System.out.println("You should probably have picked one...but too late now...");
+                        }
+                        else
+                        {
+                            invalidInput();
+                        }
 
-                        playing = false;
-                        selecting = false;
+                        System.out.println("\nYou begin to walk around the base of the mountain searching for a crystal.");
+                        System.out.println("You see something shiny out of the corner of your eye. What do you do?");
+                        System.out.println("1. Stop and take a closer look");
+                        System.out.println("2. Hide behind a bush and scope out the situation");
+                        System.out.println("3. Move on and ignore it");
+                        shinyObjectInvestigate = sc.nextLine();
+                        if (shinyObjectInvestigate.equals("1"))
+                        {
+                            System.out.println("\nUpon deciding to take a closer look, you lean over. While you are");
+                            System.out.println("leaning over, you notice a shadow approaching.");
+                            if (power > 200)
+                            {
+                                System.out.println("You have two options: ");
+                                System.out.println("1. Look over your shoulder to see what it is");
+                                System.out.println("2. Grab the crystal and try to make a dash for it");
+                                String leaningDecision = sc.nextLine();
+                                if (leaningDecision.equals("1"))
+                                {
+                                    
+                                }
+                                else if (leaningDecision.equals("2"))
+                                {
+
+                                }
+                                else
+                                {
+                                    invalidInput();
+                                }
+                            }
+                            else
+                            {
+                                System.out.println("You have two options: ");
+                                System.out.println("1. Abort the mission");
+                                System.out.println("2. Make a run for it");
+                            }
+                        }
+                        else if (shinyObjectInvestigate.equals("2"))
+                        {
+
+                        }
+                        else if (shinyObjectInvestigate.equals("3"))
+                        {
+
+                        }
+                        else
+                        {
+                            invalidInput();
+                        }
+
+                        replayOptions = true;
+                        while (replayOptions)
+                        {
+                            System.out.println("\nPlease choose an option: ");
+                            System.out.println("1. Restart");
+                            System.out.println("2. Exit Game");
+                            replay = sc.nextLine();
+                            if (replay.equals("1"))
+                            {
+                                replayOptions = false;
+                            }
+                            else if (replay.equals("2"))
+                            {
+                                System.out.println("Goodbye!  Hope you had fun today!");
+                                replayOptions = false;
+                                playing = false;
+                                selecting = false;
+                            }
+                            else
+                            {
+                                invalidInput();
+                            }
+                        }
                     }
+
+
+
+
+
+
+
+
+
+
+
 
                     else if (gameMode.equals("2"))
                     {
@@ -105,7 +263,7 @@ public class TextAdventure
 
                     else
                     {
-                        System.out.println("Please enter a valid choice");
+                        invalidInput();
                     }
                 }
             }
@@ -117,13 +275,13 @@ public class TextAdventure
 
             else if (gameOption.equals("3"))
             {
-                System.out.println("Goodbye! Hope you had fun today!");
+                System.out.println("Goodbye!");
                 playing = false;
             }
 
             else
             {
-                System.out.println("Please enter a valid choice");
+                invalidInput();
             }
         }
     }
