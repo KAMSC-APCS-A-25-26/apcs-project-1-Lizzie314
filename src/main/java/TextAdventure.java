@@ -175,7 +175,7 @@ public class TextAdventure
                         {
                             System.out.println("\nUpon deciding to take a closer look, you lean over. While you are");
                             System.out.println("leaning over, you notice a shadow approaching.");
-                            if (power > 200)
+                            if (power > 210)
                             {
                                 System.out.println("You have two options: ");
                                 System.out.println("1. Look over your shoulder to see what it is");
@@ -190,16 +190,37 @@ public class TextAdventure
                                     String attackChoice = sc.nextLine();
                                     if (attackChoice.equals("1"))
                                     {
-
+                                        for (int i = 1; i <= 6; i++)
+                                        {
+                                            if (i%2 == 0)
+                                            {
+                                                health -= 5;
+                                            }
+                                            else
+                                            {
+                                                power -= 5;
+                                            }
+                                        }
                                     }
                                     else if (attackChoice.equals("2"))
                                     {
-
+                                        for (int j = 1; j <= 6; j++)
+                                        {
+                                            if (j%2 != 0)
+                                            {
+                                                health -= 6;
+                                            }
+                                            else
+                                            {
+                                                power -= 5;
+                                            }
+                                        }
                                     }
                                     else
                                     {
                                         invalidInput();
                                     }
+                                    System.out.println("\n");
                                 }
                                 else if (leaningDecision.equals("2"))
                                 {
