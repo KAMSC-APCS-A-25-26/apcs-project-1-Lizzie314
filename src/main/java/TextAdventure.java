@@ -79,8 +79,7 @@ public class TextAdventure
                     // Game Mode Selection
                     System.out.println("\nGame Modes:");
                     System.out.println("1. Crystal Mountain");
-                    System.out.println("2. Magic Forest");
-                    System.out.println("3. City Quest");
+                    System.out.println("2. City Quest");
                     System.out.print("Please choose a game mode: ");
                     gameMode = sc.nextLine();
 
@@ -184,7 +183,23 @@ public class TextAdventure
                                 String leaningDecision = sc.nextLine();
                                 if (leaningDecision.equals("1"))
                                 {
-                                    
+                                    System.out.println("\nWhen you look over your shoulder, you see someone hiding in black");
+                                    System.out.println("robes. It is one of the villains. What do you choose to do?");
+                                    System.out.println("1. Attack them first");
+                                    System.out.println("2. Wait for them to attack you");
+                                    String attackChoice = sc.nextLine();
+                                    if (attackChoice.equals("1"))
+                                    {
+
+                                    }
+                                    else if (attackChoice.equals("2"))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        invalidInput();
+                                    }
                                 }
                                 else if (leaningDecision.equals("2"))
                                 {
@@ -228,7 +243,7 @@ public class TextAdventure
                             }
                             else if (replay.equals("2"))
                             {
-                                System.out.println("Goodbye!  Hope you had fun today!");
+                                System.out.println("\nGoodbye!  Hope you had fun today!");
                                 replayOptions = false;
                                 playing = false;
                                 selecting = false;
@@ -256,10 +271,7 @@ public class TextAdventure
 
                     }
 
-                    else if (gameMode.equals("3"))
-                    {
 
-                    }
 
                     else
                     {
