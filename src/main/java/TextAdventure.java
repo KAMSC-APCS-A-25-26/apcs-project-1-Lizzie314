@@ -1130,7 +1130,48 @@ public class TextAdventure
 
                     else if (gameMode.equals("2"))
                     {
-                        
+                        System.out.println("\nThere are two magical gems hidden around town. It's your job to find them");
+                        boolean input20 = true;
+                        while (input20)
+                        {
+                            System.out.println("\nWhere do you choose to go first?");
+                            System.out.println("1. Town Square");
+                            System.out.println("2. Well");
+                            String chosePlace = sc.nextLine();
+                            if (chosePlace.equals("1"))
+                            {
+                                input20 = false;
+                                boolean input21 = true;
+                                while (input21)
+                                {
+                                    System.out.println("Upon entering the square, you have two choices.");
+                                    System.out.println("1. Ask if anyone has seen a gem");
+                                    System.out.println("2. Go to the center of the square where you see something shining");
+                                    String makeChoice = sc.nextLine();
+                                    if (makeChoice.equals("1"))
+                                    {
+                                        input21 = false;
+                                    }
+                                    else if (makeChoice.equals("2"))
+                                    {
+                                        input21 = false;
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Please enter a valid input");
+                                    }
+                                }
+
+                            }
+                            else if (chosePlace.equals("2"))
+                            {
+                                input20 = false;
+                            }
+                            else
+                            {
+                                System.out.println("Please enter a valid input");
+                            }
+                        }
                     }
 
 
