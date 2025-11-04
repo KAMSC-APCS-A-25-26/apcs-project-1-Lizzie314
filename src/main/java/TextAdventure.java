@@ -91,6 +91,7 @@ public class TextAdventure
             gameOption = sc.nextLine();
 
             // Game option of play
+            // If loop 1
             if (gameOption.equals("1"))
             {
                 // Loops until valid input is given
@@ -108,6 +109,7 @@ public class TextAdventure
                     power = 200;
 
                     // Game mode of crystal mountain
+                    // If loop 2
                     if (gameMode.equals("1"))
                     {
                         // Create crystals collected variable
@@ -129,6 +131,7 @@ public class TextAdventure
                             // Choose animal sidekick
                             System.out.print("\nWould you like to choose an animal sidekick? (Y/N): ");
                             wantSidekick = sc.nextLine();
+                            // If loop 3
                             if (wantSidekick.equals("Y"))
                             {
                                 input1 = false;
@@ -142,6 +145,7 @@ public class TextAdventure
                                     System.out.println("3. Leah the Lioness");
                                     System.out.print("Which sidekick do you want?: ");
                                     animalSidekick = sc.nextLine();
+                                    // If loop 4
                                     if (animalSidekick.equals("1"))
                                     {
                                         input2 = false;
@@ -181,6 +185,7 @@ public class TextAdventure
                         {
                             System.out.print("\nWould you like to choose an item? (Y/N): ");
                             wantItem = sc.nextLine();
+                            // If loop 5
                             if (wantItem.equals("Y"))
                             {
                                 input3 = false;
@@ -194,6 +199,7 @@ public class TextAdventure
                                     System.out.println("3. Spellbook");
                                     System.out.print("Which item do you want?: ");
                                     item = sc.nextLine();
+                                    // If loop 6
                                     if (item.equals("1"))
                                     {
                                         input4 = false;
@@ -238,6 +244,7 @@ public class TextAdventure
                             System.out.println("2. Hide behind a bush and scope out the situation");
                             System.out.println("3. Move on and ignore it");
                             shinyObjectInvestigate = sc.nextLine();
+                            // If loop 7
                             if (shinyObjectInvestigate.equals("1"))
                             {
                                 input4 = false;
@@ -245,6 +252,7 @@ public class TextAdventure
                                 // Scene 2: Closer look
                                 System.out.println("\nUpon deciding to take a closer look, you lean over. While you are");
                                 System.out.println("leaning over, you notice a shadow approaching.");
+                                // If loop 8
                                 if (power > 210)
                                 {
                                     boolean input5 = true;
@@ -256,6 +264,7 @@ public class TextAdventure
                                         System.out.println("1. Look over your shoulder to see what it is");
                                         System.out.println("2. Grab the crystal and try to make a dash for it");
                                         String leaningDecision = sc.nextLine();
+                                        // If loop 9
                                         if (leaningDecision.equals("1"))
                                         {
                                             input5 = false;
@@ -269,11 +278,13 @@ public class TextAdventure
                                                 System.out.println("1. Attack them first");
                                                 System.out.println("2. Wait for them to attack you");
                                                 String attackChoice = sc.nextLine();
+                                                // If loop 10
                                                 if (attackChoice.equals("1"))
                                                 {
                                                     input6 = false;
                                                     for (int i = 1; i <= 6; i++)
                                                     {
+                                                        // If loop 11
                                                         if (i % 2 == 0)
                                                         {
                                                             health -= 5;
@@ -289,6 +300,7 @@ public class TextAdventure
                                                     input6 = false;
                                                     for (int j = 1; j <= 6; j++)
                                                     {
+                                                        // If loop 12
                                                         if (j % 2 != 0)
                                                         {
                                                             health -= 6;
@@ -304,6 +316,7 @@ public class TextAdventure
                                                     System.out.println("Please enter a valid input");
                                                 }
                                             }
+                                            // If loop 13
                                             if (health > 0 && power > 0)
                                             {
                                                 System.out.println("You have successfully collected your first crystal.");
@@ -324,6 +337,7 @@ public class TextAdventure
                                                     System.out.println("1. Take the path that goes into a cave to the right.");
                                                     System.out.println("2. Continue on the path that you are already on.");
                                                     String pathChoice = sc.nextLine();
+                                                    // If loop 14
                                                     if (pathChoice.equals("1"))
                                                     {
                                                         input7 = false;
@@ -338,6 +352,7 @@ public class TextAdventure
                                                             System.out.println("1. Follow the light");
                                                             System.out.println("2. Turn around and exit the cave");
                                                             String lightChoice = sc.nextLine();
+                                                            // If loop 15
                                                             if (lightChoice.equals("1"))
                                                             {
                                                                 input8 = false;
@@ -354,6 +369,7 @@ public class TextAdventure
                                                                     System.out.println("1. Figure out the combination");
                                                                     System.out.println("2. Turn around");
                                                                     String tryDoor = sc.nextLine();
+                                                                    // If loop 16
                                                                     if (tryDoor.equals("1"))
                                                                     {
                                                                         input9 = false;
@@ -371,6 +387,7 @@ public class TextAdventure
                                                                             System.out.println("Try a combination with digits separated by a space: ");
                                                                             int firstNum = sc.nextInt();
                                                                             int secondNum = sc.nextInt();
+                                                                            // If loop 17
                                                                             if (firstNum == firstDigit && secondNum == secondDigit)
                                                                             {
                                                                                 System.out.println("You have successfully opened the door");
@@ -381,10 +398,12 @@ public class TextAdventure
                                                                                 System.out.println("Try again");
                                                                             }
                                                                         }
+                                                                        // If loop 18
                                                                         if (m < 101)
                                                                         {
                                                                             health -= m / 4;
                                                                             power -= m;
+                                                                            // If loop 19
                                                                             if (health > 0 && power > 0)
                                                                             {
                                                                                 // Scene 8: Note and crystal
@@ -418,6 +437,7 @@ public class TextAdventure
                                                                                     System.out.println("1. Look closer");
                                                                                     System.out.println("2. Ignore it");
                                                                                     String looking = sc.nextLine();
+                                                                                    // If loop 20
                                                                                     if (looking.equals("1"))
                                                                                     {
                                                                                         input10 = false;
@@ -434,6 +454,7 @@ public class TextAdventure
                                                                                             System.out.println("1. Chase after it");
                                                                                             System.out.println("2. Let it go");
                                                                                             String chase = sc.nextLine();
+                                                                                            // If loop 21
                                                                                             if (chase.equals("1"))
                                                                                             {
                                                                                                 input11 = false;
@@ -450,6 +471,7 @@ public class TextAdventure
                                                                                                     System.out.println("1. Enter it");
                                                                                                     System.out.println("2. Forget it");
                                                                                                     String enter = sc.nextLine();
+                                                                                                    // If loop 22
                                                                                                     if (enter.equals("1"))
                                                                                                     {
                                                                                                         input12 = false;
@@ -468,11 +490,13 @@ public class TextAdventure
                                                                                                             System.out.println("1. Attack them first");
                                                                                                             System.out.println("2. Wait for them to attack you");
                                                                                                             String attackChoice = sc.nextLine();
+                                                                                                            // If loop 23
                                                                                                             if (attackChoice.equals("1"))
                                                                                                             {
                                                                                                                 input13 = false;
                                                                                                                 for (int i = 1; i <= 6; i++)
                                                                                                                 {
+                                                                                                                    // If loop 24
                                                                                                                     if (i % 2 == 0)
                                                                                                                     {
                                                                                                                         health -= 10;
@@ -488,6 +512,7 @@ public class TextAdventure
                                                                                                                 input13 = false;
                                                                                                                 for (int j = 1; j <= 6; j++)
                                                                                                                 {
+                                                                                                                    // If loop 25
                                                                                                                     if (j % 2 != 0)
                                                                                                                     {
                                                                                                                         health -= 12;
@@ -512,6 +537,7 @@ public class TextAdventure
                                                                                                             System.out.println("Crystals: " + crystalsCollected);
                                                                                                             System.out.println("Power: " + power);
                                                                                                             System.out.println("Health: " + health);
+                                                                                                            // If loop 26
                                                                                                             if (crystalsCollected == 3)
                                                                                                             {
                                                                                                                 // Ending 1
@@ -631,6 +657,7 @@ public class TextAdventure
                                                                             System.out.println("1. Look closer");
                                                                             System.out.println("2. Ignore it");
                                                                             String looking = sc.nextLine();
+                                                                            // If loop 27
                                                                             if (looking.equals("1"))
                                                                             {
                                                                                 input10 = false;
@@ -646,6 +673,7 @@ public class TextAdventure
                                                                                     System.out.println("1. Chase after it");
                                                                                     System.out.println("2. Let it go");
                                                                                     String chase = sc.nextLine();
+                                                                                    // If loop 28
                                                                                     if (chase.equals("1"))
                                                                                     {
                                                                                         input11 = false;
@@ -662,6 +690,7 @@ public class TextAdventure
                                                                                             System.out.println("1. Enter it");
                                                                                             System.out.println("2. Forget it");
                                                                                             String enter = sc.nextLine();
+                                                                                            // If loop 29
                                                                                             if (enter.equals("1"))
                                                                                             {
                                                                                                 input12 = false;
@@ -680,11 +709,13 @@ public class TextAdventure
                                                                                                     System.out.println("1. Attack them first");
                                                                                                     System.out.println("2. Wait for them to attack you");
                                                                                                     String attackChoice = sc.nextLine();
+                                                                                                    // If loop 30
                                                                                                     if (attackChoice.equals("1"))
                                                                                                     {
                                                                                                         input13 = false;
                                                                                                         for (int i = 1; i <= 6; i++)
                                                                                                         {
+                                                                                                            // If loop 31
                                                                                                             if (i % 2 == 0)
                                                                                                             {
                                                                                                                 health -= 10;
@@ -700,6 +731,7 @@ public class TextAdventure
                                                                                                         input13 = false;
                                                                                                         for (int j = 1; j <= 6; j++)
                                                                                                         {
+                                                                                                            // If loop 32
                                                                                                             if (j % 2 != 0)
                                                                                                             {
                                                                                                                 health -= 12;
@@ -715,6 +747,7 @@ public class TextAdventure
                                                                                                         System.out.println("Please enter a valid input");
                                                                                                     }
                                                                                                 }
+                                                                                                // If loop 33
                                                                                                 if (health > 0 && power > 0)
                                                                                                 {
                                                                                                     // Scene 23: Collected third crystal
@@ -724,6 +757,7 @@ public class TextAdventure
                                                                                                     System.out.println("Crystals: " + crystalsCollected);
                                                                                                     System.out.println("Power: " + power);
                                                                                                     System.out.println("Health: " + health);
+                                                                                                    // If loop 34
                                                                                                     if (crystalsCollected == 3)
                                                                                                     {
                                                                                                         // Ending 9
@@ -833,6 +867,7 @@ public class TextAdventure
                                                                     System.out.println("1. Look closer");
                                                                     System.out.println("2. Ignore it");
                                                                     String looking = sc.nextLine();
+                                                                    // If loop 35
                                                                     if (looking.equals("1"))
                                                                     {
                                                                         input10 = false;
@@ -848,6 +883,7 @@ public class TextAdventure
                                                                             System.out.println("1. Chase after it");
                                                                             System.out.println("2. Let it go");
                                                                             String chase = sc.nextLine();
+                                                                            // If loop 36
                                                                             if (chase.equals("1"))
                                                                             {
                                                                                 input11 = false;
@@ -864,6 +900,7 @@ public class TextAdventure
                                                                                     System.out.println("1. Enter it");
                                                                                     System.out.println("2. Forget it");
                                                                                     String enter = sc.nextLine();
+                                                                                    // If loop 37
                                                                                     if (enter.equals("1"))
                                                                                     {
                                                                                         input12 = false;
@@ -882,11 +919,13 @@ public class TextAdventure
                                                                                             System.out.println("1. Attack them first");
                                                                                             System.out.println("2. Wait for them to attack you");
                                                                                             String attackChoice = sc.nextLine();
+                                                                                            // If loop 38
                                                                                             if (attackChoice.equals("1"))
                                                                                             {
                                                                                                 input13 = false;
                                                                                                 for (int i = 1; i <= 6; i++)
                                                                                                 {
+                                                                                                    // If loop 39
                                                                                                     if (i % 2 == 0)
                                                                                                     {
                                                                                                         health -= 10;
@@ -902,6 +941,7 @@ public class TextAdventure
                                                                                                 input13 = false;
                                                                                                 for (int j = 1; j <= 6; j++)
                                                                                                 {
+                                                                                                    // If loop 40
                                                                                                     if (j % 2 != 0)
                                                                                                     {
                                                                                                         health -= 12;
@@ -917,6 +957,7 @@ public class TextAdventure
                                                                                                 System.out.println("Please enter a valid input");
                                                                                             }
                                                                                         }
+                                                                                        // If loop 41
                                                                                         if (health > 0 && power > 0)
                                                                                         {
                                                                                             // Scene 32: Collected crystal
@@ -926,6 +967,7 @@ public class TextAdventure
                                                                                             System.out.println("Crystals: " + crystalsCollected);
                                                                                             System.out.println("Power: " + power);
                                                                                             System.out.println("Health: " + health);
+                                                                                            // If loop 42
                                                                                             if (crystalsCollected == 3)
                                                                                             {
                                                                                                 // Ending 15
@@ -1033,6 +1075,7 @@ public class TextAdventure
                                                             System.out.println("1. Look closer");
                                                             System.out.println("2. Ignore it");
                                                             String looking = sc.nextLine();
+                                                            // If loop 43
                                                             if (looking.equals("1"))
                                                             {
                                                                 input10 = false;
@@ -1048,6 +1091,7 @@ public class TextAdventure
                                                                     System.out.println("1. Chase after it");
                                                                     System.out.println("2. Let it go");
                                                                     String chase = sc.nextLine();
+                                                                    // If loop 44
                                                                     if (chase.equals("1"))
                                                                     {
                                                                         input11 = false;
@@ -1064,6 +1108,7 @@ public class TextAdventure
                                                                             System.out.println("1. Enter it");
                                                                             System.out.println("2. Forget it");
                                                                             String enter = sc.nextLine();
+                                                                            // If loop 45
                                                                             if (enter.equals("1"))
                                                                             {
                                                                                 input12 = false;
@@ -1082,11 +1127,13 @@ public class TextAdventure
                                                                                     System.out.println("1. Attack them first");
                                                                                     System.out.println("2. Wait for them to attack you");
                                                                                     String attackChoice = sc.nextLine();
+                                                                                    // If loop 46
                                                                                     if (attackChoice.equals("1"))
                                                                                     {
                                                                                         input13 = false;
                                                                                         for (int i = 1; i <= 6; i++)
                                                                                         {
+                                                                                            // If loop 47
                                                                                             if (i % 2 == 0)
                                                                                             {
                                                                                                 health -= 10;
@@ -1102,6 +1149,7 @@ public class TextAdventure
                                                                                         input13 = false;
                                                                                         for (int j = 1; j <= 6; j++)
                                                                                         {
+                                                                                            // If loop 48
                                                                                             if (j % 2 != 0)
                                                                                             {
                                                                                                 health -= 12;
@@ -1117,6 +1165,7 @@ public class TextAdventure
                                                                                         System.out.println("Please enter a valid input");
                                                                                     }
                                                                                 }
+                                                                                // If loop 49
                                                                                 if (health > 0 && power > 0)
                                                                                 {
                                                                                     // Scene 41: Collect third crystal
@@ -1126,6 +1175,7 @@ public class TextAdventure
                                                                                     System.out.println("Crystals: " + crystalsCollected);
                                                                                     System.out.println("Power: " + power);
                                                                                     System.out.println("Health: " + health);
+                                                                                    // If loop 50
                                                                                     if (crystalsCollected == 3)
                                                                                     {
                                                                                         // Ending 21
@@ -1281,6 +1331,7 @@ public class TextAdventure
                             System.out.println("1. Restart");
                             System.out.println("2. Exit Game");
                             replay = sc.nextLine();
+                            // If loop 51
                             if (replay.equals("1"))
                             {
                                 replayOptions = false;
@@ -1313,6 +1364,7 @@ public class TextAdventure
                             System.out.println("1. Town Square");
                             System.out.println("2. Well");
                             String chosePlace = sc.nextLine();
+                            // If loop 52
                             if (chosePlace.equals("1"))
                             {
                                 input20 = false;
@@ -1326,6 +1378,7 @@ public class TextAdventure
                                     System.out.println("1. Go to the market");
                                     System.out.println("2. Go to the center of the square where you see something shining");
                                     String makeChoice = sc.nextLine();
+                                    // If loop 53
                                     if (makeChoice.equals("1"))
                                     {
                                         input21 = false;
@@ -1340,6 +1393,7 @@ public class TextAdventure
                                             System.out.println("1. Search the stalls in case there is something hidden");
                                             System.out.println("2. Go back to the center of the square");
                                             String stalls = sc.nextLine();
+                                            // If loop 54
                                             if (stalls.equals("1"))
                                             {
                                                 input22 = false;
@@ -1354,6 +1408,7 @@ public class TextAdventure
                                                     System.out.println("1. Pick it up");
                                                     System.out.println("2. Leave it");
                                                     String pickUpKey = sc.nextLine();
+                                                    // If loop 55
                                                     if (pickUpKey.equals("1"))
                                                     {
                                                         input23 = false;
@@ -1393,12 +1448,14 @@ public class TextAdventure
                                     System.out.println("\nOnce you enter the center of the town square, you spot what");
                                     System.out.println("is shining. It's a special keyhole in the middle of the town");
                                     System.out.println("square");
+                                    // If loop 56
                                     if (key)
                                     {
                                         townSquare = true;
                                         System.out.println("\nYour key from earlier is able to fit in the keyhole and open it.");
                                         System.out.println("A gem pops out. You have successfully collected a gem.");
                                         System.out.println("Congratulations!");
+                                        // If loop 57
                                         if (well)
                                         {
                                             // Ending 32
@@ -1418,6 +1475,7 @@ public class TextAdventure
                                                 System.out.println("1. Pick it up");
                                                 System.out.println("2. Leave it");
                                                 String bucket = sc.nextLine();
+                                                // If loop 58
                                                 if (bucket.equals("1"))
                                                 {
                                                     input24 = false;
@@ -1433,6 +1491,7 @@ public class TextAdventure
                                                         System.out.println("1. Pick it up");
                                                         System.out.println("2. Decide it's a trap");
                                                         String pick = sc.nextLine();
+                                                        // If loop 59
                                                         if (pick.equals("1"))
                                                         {
                                                             // Ending 33
@@ -1485,6 +1544,7 @@ public class TextAdventure
                                     System.out.println("1. Pick it up");
                                     System.out.println("2. Leave it");
                                     String bucket = sc.nextLine();
+                                    // If loop 60
                                     if (bucket.equals("1"))
                                     {
                                         input24 = false;
@@ -1500,12 +1560,14 @@ public class TextAdventure
                                             System.out.println("1. Pick it up");
                                             System.out.println("2. Decide it's a trap");
                                             String pick = sc.nextLine();
+                                            // If loop 61
                                             if (pick.equals("1"))
                                             {
                                                 // Scene 64: Collect it
                                                 input25 = false;
                                                 well = true;
                                                 System.out.println("\nYou were right. It wasn't a trap. You collect it successfully.");
+                                                // If loop 62
                                                 if (townSquare)
                                                 {
                                                     // Ending 36
@@ -1524,6 +1586,7 @@ public class TextAdventure
                                                         System.out.println("1. Go to the market");
                                                         System.out.println("2. Go to the center of the square where you see something shining");
                                                         String makeChoice = sc.nextLine();
+                                                        // If loop 63
                                                         if (makeChoice.equals("1"))
                                                         {
                                                             input21 = false;
@@ -1538,6 +1601,7 @@ public class TextAdventure
                                                                 System.out.println("1. Search the stalls in case there is something hidden");
                                                                 System.out.println("2. Go back to the center of the square");
                                                                 String stalls = sc.nextLine();
+                                                                // If loop 64
                                                                 if (stalls.equals("1"))
                                                                 {
                                                                     input22 = false;
@@ -1552,6 +1616,7 @@ public class TextAdventure
                                                                         System.out.println("1. Pick it up");
                                                                         System.out.println("2. Leave it");
                                                                         String pickUpKey = sc.nextLine();
+                                                                        // If loop 65
                                                                         if (pickUpKey.equals("1"))
                                                                         {
                                                                             input23 = false;
@@ -1591,6 +1656,7 @@ public class TextAdventure
                                                         System.out.println("\nOnce you enter the center of the town square, you spot what");
                                                         System.out.println("is shining. It's a special keyhole in the middle of the town");
                                                         System.out.println("square");
+                                                        // If loop 66
                                                         if (key)
                                                         {
                                                             // Ending 37
@@ -1659,6 +1725,7 @@ public class TextAdventure
                             System.out.println("1. Restart");
                             System.out.println("2. Exit Game");
                             replay = sc.nextLine();
+                            // If loop 67
                             if (replay.equals("1"))
                             {
                                 replayOptions = false;
@@ -1684,9 +1751,7 @@ public class TextAdventure
                     }
                 }
             }
-
-
-
+            
             // Game option of premise
             else if (gameOption.equals("2"))
             {
