@@ -21,12 +21,13 @@ public class TextAdventure
         String wantItem;
         String item;
         String replay;
-        int crystals;
         int health;
         int power;
         boolean replayOptions = false;
         String shinyObjectInvestigate;
-        int crystalsCollected = 0;
+        boolean key = false;
+        boolean townSquare = false;
+        boolean well = false;
 
 
         // Welcome Screen
@@ -87,7 +88,7 @@ public class TextAdventure
 
                     if (gameMode.equals("1"))
                     {
-                        crystals = 0;
+                        int crystalsCollected = 0;
                         System.out.println("\nWelcome to Crystal Mountain");
                         boolean input1 = true;
                         while (input1)
@@ -306,7 +307,7 @@ public class TextAdventure
                                                                         System.out.println("correct and the door opens");
                                                                         int firstDigit = random.nextInt(10);
                                                                         int secondDigit = random.nextInt(10);
-                                                                        int m = 0;
+                                                                        int m;
                                                                         for (m = 0; m < 101; m++)
                                                                         {
                                                                             System.out.println("Try a combination with digits separated by a space: ");
@@ -332,7 +333,7 @@ public class TextAdventure
                                                                                 System.out.println(power);
                                                                                 System.out.println("\nYou walk into the room and find a note.");
                                                                                 System.out.println("You bend over to read it and it reads that");
-                                                                                System.out.println("the villians put the lock on the door, but");
+                                                                                System.out.println("the villains put the lock on the door, but");
                                                                                 System.out.println("the crystal is still in the room");
                                                                                 System.out.println("You look around and spot the crystal, which");
                                                                                 System.out.println("you then collect.");
@@ -389,7 +390,7 @@ public class TextAdventure
                                                                                                             System.out.println("\nUpon entering it, the squirrel");
                                                                                                             System.out.println("transforms into a villain. In");
                                                                                                             System.out.println("addition, since you have already");
-                                                                                                            System.out.println("opened the lock the villians");
+                                                                                                            System.out.println("opened the lock the villains");
                                                                                                             System.out.println("placed, there is another backup");
                                                                                                             System.out.println("waiting. What do you choose?");
                                                                                                             System.out.println("1. Attack them first");
@@ -438,7 +439,7 @@ public class TextAdventure
                                                                                                             System.out.println("Crystals: " + crystalsCollected);
                                                                                                             System.out.println("Power: " + power);
                                                                                                             System.out.println("Health: " + health);
-                                                                                                            if (crystals == 3)
+                                                                                                            if (crystalsCollected == 3)
                                                                                                             {
                                                                                                                 System.out.println("You have successfully completed");
                                                                                                                 System.out.println("your mission.");
@@ -576,7 +577,7 @@ public class TextAdventure
                                                                                                     System.out.println("\nUpon entering it, the squirrel");
                                                                                                     System.out.println("transforms into a villain. In");
                                                                                                     System.out.println("addition, since you have already");
-                                                                                                    System.out.println("opened the lock the villians");
+                                                                                                    System.out.println("opened the lock the villains");
                                                                                                     System.out.println("placed, there is another backup");
                                                                                                     System.out.println("waiting. What do you choose?");
                                                                                                     System.out.println("1. Attack them first");
@@ -625,7 +626,7 @@ public class TextAdventure
                                                                                                     System.out.println("Crystals: " + crystalsCollected);
                                                                                                     System.out.println("Power: " + power);
                                                                                                     System.out.println("Health: " + health);
-                                                                                                    if (crystals == 3)
+                                                                                                    if (crystalsCollected == 3)
                                                                                                     {
                                                                                                         System.out.println("You have successfully completed");
                                                                                                         System.out.println("your mission.");
@@ -755,7 +756,7 @@ public class TextAdventure
                                                                                             System.out.println("\nUpon entering it, the squirrel");
                                                                                             System.out.println("transforms into a villain. In");
                                                                                             System.out.println("addition, since you have already");
-                                                                                            System.out.println("opened the lock the villians");
+                                                                                            System.out.println("opened the lock the villains");
                                                                                             System.out.println("placed, there is another backup");
                                                                                             System.out.println("waiting. What do you choose?");
                                                                                             System.out.println("1. Attack them first");
@@ -804,7 +805,7 @@ public class TextAdventure
                                                                                             System.out.println("Crystals: " + crystalsCollected);
                                                                                             System.out.println("Power: " + power);
                                                                                             System.out.println("Health: " + health);
-                                                                                            if (crystals == 3)
+                                                                                            if (crystalsCollected == 3)
                                                                                             {
                                                                                                 System.out.println("You have successfully completed");
                                                                                                 System.out.println("your mission.");
@@ -932,7 +933,7 @@ public class TextAdventure
                                                                                     System.out.println("\nUpon entering it, the squirrel");
                                                                                     System.out.println("transforms into a villain. In");
                                                                                     System.out.println("addition, since you have already");
-                                                                                    System.out.println("opened the lock the villians");
+                                                                                    System.out.println("opened the lock the villains");
                                                                                     System.out.println("placed, there is another backup");
                                                                                     System.out.println("waiting. What do you choose?");
                                                                                     System.out.println("1. Attack them first");
@@ -981,7 +982,7 @@ public class TextAdventure
                                                                                     System.out.println("Crystals: " + crystalsCollected);
                                                                                     System.out.println("Power: " + power);
                                                                                     System.out.println("Health: " + health);
-                                                                                    if (crystals == 3)
+                                                                                    if (crystalsCollected == 3)
                                                                                     {
                                                                                         System.out.println("You have successfully completed");
                                                                                         System.out.println("your mission.");
@@ -1090,6 +1091,7 @@ public class TextAdventure
                             {
                                 input4 = false;
                                 System.out.println("You decide the mission is going to be too dangerous.");
+                                System.out.println("You abandon the mission");
                                 replayOptions = false;
                             }
                             else if (shinyObjectInvestigate.equals("3"))
@@ -1144,13 +1146,58 @@ public class TextAdventure
                                 boolean input21 = true;
                                 while (input21)
                                 {
-                                    System.out.println("Upon entering the square, you have two choices.");
-                                    System.out.println("1. Ask if anyone has seen a gem");
+                                    System.out.println("\nUpon entering the square, you have two choices.");
+                                    System.out.println("1. Go to the market");
                                     System.out.println("2. Go to the center of the square where you see something shining");
                                     String makeChoice = sc.nextLine();
                                     if (makeChoice.equals("1"))
                                     {
                                         input21 = false;
+                                        boolean input22 = true;
+                                        while (input22)
+                                        {
+                                            System.out.println("\nUpon going to the market, you find empty stalls everywhere.");
+                                            System.out.println("The market is closed today. What do you choose to do?");
+                                            System.out.println("1. Search the stalls in case there is something hidden");
+                                            System.out.println("2. Go back to the center of the square");
+                                            String stalls = sc.nextLine();
+                                            if (stalls.equals("1"))
+                                            {
+                                                input22 = false;
+                                                boolean input23 = true;
+                                                while (input23)
+                                                {
+                                                    System.out.println("\nUpon further examination of the stalls, you find a");
+                                                    System.out.println("shining gold key hidden. What do you do?");
+                                                    System.out.println("1. Pick it up");
+                                                    System.out.println("2. Leave it");
+                                                    String pickUpKey = sc.nextLine();
+                                                    if (pickUpKey.equals("1"))
+                                                    {
+                                                        input23 = false;
+                                                        key = true;
+                                                    }
+                                                    else if (pickUpKey.equals("2"))
+                                                    {
+                                                        input23 = false;
+                                                        key = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        System.out.println("Please enter a valid input");
+                                                    }
+                                                }
+                                            }
+                                            else if (stalls.equals("2"))
+                                            {
+                                                input22 = false;
+                                                key = false;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Please enter a valid input");
+                                            }
+                                        }
                                     }
                                     else if (makeChoice.equals("2"))
                                     {
@@ -1160,12 +1207,235 @@ public class TextAdventure
                                     {
                                         System.out.println("Please enter a valid input");
                                     }
+                                    System.out.println("\nOnce you enter the center of the town square, you spot what");
+                                    System.out.println("is shining. It's a special keyhole in the middle of the town");
+                                    System.out.println("square");
+                                    if (key)
+                                    {
+                                        townSquare = true;
+                                        System.out.println("\nYour key from earlier is able to fit in the keyhole and open it.");
+                                        System.out.println("A gem pops out. You have successfully collected a gem.");
+                                        System.out.println("Congratulations!");
+                                        if (well)
+                                        {
+                                            System.out.println("\nCongratulations for collecting both gems.");
+                                            replayOptions = true;
+                                        }
+                                        else
+                                        {
+                                            boolean input24 = true;
+                                            while (input24) {
+                                                System.out.println("\nUpon approaching the well, you see a bucket. What do you do?");
+                                                System.out.println("1. Pick it up");
+                                                System.out.println("2. Leave it");
+                                                String bucket = sc.nextLine();
+                                                if (bucket.equals("1")) {
+                                                    input24 = false;
+                                                    boolean input25 = true;
+                                                    while (input25) {
+                                                        System.out.println("\nWhen you come to the well and look down, you see a gem floating");
+                                                        System.out.println("in the water. The gem is within reach using the bucket");
+                                                        System.out.println("You begin to wonder if it's a trap. What do you do?");
+                                                        System.out.println("1. Pick it up");
+                                                        System.out.println("2. Decide it's a trap");
+                                                        String pick = sc.nextLine();
+                                                        if (pick.equals("1")) {
+                                                            input25 = false;
+                                                            well = true;
+                                                            System.out.println("\nYou were right. It wasn't a trap. You collect it successfully.");
+                                                            System.out.println("Congratulations for collecting both gems.");
+                                                            replayOptions = true;
+                                                        } else if (pick.equals("2")) {
+                                                            input25 = false;
+                                                            System.out.println("\nGood job for being careful, but you were wrong. It isn't");
+                                                            System.out.println("a trap. You are unable to collect the gem.");
+                                                            replayOptions = true;
+                                                        } else {
+                                                            System.out.println("Please enter a valid input");
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("\nYou can't open the lock. You needed to in order to complete your");
+                                        System.out.println("mission though.");
+                                        replayOptions = true;
+                                    }
                                 }
 
                             }
                             else if (chosePlace.equals("2"))
                             {
                                 input20 = false;
+                                boolean input24 = true;
+                                while (input24)
+                                {
+                                    System.out.println("\nUpon approaching the well, you see a bucket. What do you do?");
+                                    System.out.println("1. Pick it up");
+                                    System.out.println("2. Leave it");
+                                    String bucket = sc.nextLine();
+                                    if (bucket.equals("1"))
+                                    {
+                                        input24 = false;
+                                        boolean input25 = true;
+                                        while (input25)
+                                        {
+                                            System.out.println("\nWhen you come to the well and look down, you see a gem floating");
+                                            System.out.println("in the water. The gem is within reach using the bucket");
+                                            System.out.println("You begin to wonder if it's a trap. What do you do?");
+                                            System.out.println("1. Pick it up");
+                                            System.out.println("2. Decide it's a trap");
+                                            String pick = sc.nextLine();
+                                            if (pick.equals("1"))
+                                            {
+                                                input25 = false;
+                                                well = true;
+                                                System.out.println("\nYou were right. It wasn't a trap. You collect it successfully.");
+                                                if (townSquare)
+                                                {
+                                                    System.out.println("\nCongratulations for collecting both gems.");
+                                                    replayOptions = true;
+                                                }
+                                                else
+                                                {
+                                                    boolean input21 = true;
+                                                    while (input21)
+                                                    {
+                                                        System.out.println("\nUpon entering the square, you have two choices.");
+                                                        System.out.println("1. Go to the market");
+                                                        System.out.println("2. Go to the center of the square where you see something shining");
+                                                        String makeChoice = sc.nextLine();
+                                                        if (makeChoice.equals("1"))
+                                                        {
+                                                            input21 = false;
+                                                            boolean input22 = true;
+                                                            while (input22)
+                                                            {
+                                                                System.out.println("\nUpon going to the market, you find empty stalls everywhere.");
+                                                                System.out.println("The market is closed today. What do you choose to do?");
+                                                                System.out.println("1. Search the stalls in case there is something hidden");
+                                                                System.out.println("2. Go back to the center of the square");
+                                                                String stalls = sc.nextLine();
+                                                                if (stalls.equals("1"))
+                                                                {
+                                                                    input22 = false;
+                                                                    boolean input23 = true;
+                                                                    while (input23)
+                                                                    {
+                                                                        System.out.println("\nUpon further examination of the stalls, you find a");
+                                                                        System.out.println("shining gold key hidden. What do you do?");
+                                                                        System.out.println("1. Pick it up");
+                                                                        System.out.println("2. Leave it");
+                                                                        String pickUpKey = sc.nextLine();
+                                                                        if (pickUpKey.equals("1"))
+                                                                        {
+                                                                            input23 = false;
+                                                                            key = true;
+                                                                        }
+                                                                        else if (pickUpKey.equals("2"))
+                                                                        {
+                                                                            input23 = false;
+                                                                            key = false;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            System.out.println("Please enter a valid input");
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else if (stalls.equals("2"))
+                                                                {
+                                                                    input22 = false;
+                                                                    key = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("Please enter a valid input");
+                                                                }
+                                                            }
+                                                        }
+                                                        else if (makeChoice.equals("2"))
+                                                        {
+                                                            input21 = false;
+                                                        }
+                                                        else
+                                                        {
+                                                            System.out.println("Please enter a valid input");
+                                                        }
+                                                        System.out.println("\nOnce you enter the center of the town square, you spot what");
+                                                        System.out.println("is shining. It's a special keyhole in the middle of the town");
+                                                        System.out.println("square");
+                                                        if (key)
+                                                        {
+                                                            townSquare = true;
+                                                            System.out.println("\nYour key from earlier is able to fit in the keyhole and open it.");
+                                                            System.out.println("A gem pops out. You have successfully collected a gem.");
+                                                            System.out.println("Congratulations!");
+                                                            System.out.println("Congratulations! You have successfully collected both gems!");
+                                                            replayOptions = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            System.out.println("\nYou can't open the lock. You needed to in order to complete your");
+                                                            System.out.println("mission though.");
+                                                            replayOptions = true;
+                                                        }
+                                                    }
+                                                }
+
+
+                                            }
+                                            else if (pick.equals("2"))
+                                            {
+                                                input25 = false;
+                                                System.out.println("\nGood job for being careful, but you were wrong. It isn't");
+                                                System.out.println("a trap. You are unable to collect the gem.");
+                                                replayOptions = true;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Please enter a valid input");
+                                            }
+                                        }
+                                    }
+                                    else if (bucket.equals("2"))
+                                    {
+                                        input24 = false;
+                                        System.out.println("\nUnfortunately, you needed it to collect the gem.");
+                                        System.out.println("You are unable to collect the gem.");
+                                        replayOptions = true;
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Please enter a valid input");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                System.out.println("Please enter a valid input");
+                            }
+                        }
+
+                        while (replayOptions)
+                        {
+                            System.out.println("\nPlease choose an option: ");
+                            System.out.println("1. Restart");
+                            System.out.println("2. Exit Game");
+                            replay = sc.nextLine();
+                            if (replay.equals("1"))
+                            {
+                                replayOptions = false;
+                            }
+                            else if (replay.equals("2"))
+                            {
+                                System.out.println("\nGoodbye!  Hope you had fun today!");
+                                replayOptions = false;
+                                playing = false;
+                                selecting = false;
                             }
                             else
                             {
@@ -1188,7 +1458,12 @@ public class TextAdventure
 
             else if (gameOption.equals("2"))
             {
-                // Game Premise
+                System.out.println("You are an elf in the world of Enchanted. There is havoc being wrecked on your world");
+                System.out.println("in regards to some crystals and gems that give your people powers. You can help out the");
+                System.out.println("people of your world by taking on a mission from the leaders in power. One mission is");
+                System.out.println("going to Crystal Mountain and collecting three crystals hidden around the mountain");
+                System.out.println("while battling a villainous group. The other mission is to go on a quest around the");
+                System.out.println("city to find two gems hidden. Good luck elf!");
             }
 
             else if (gameOption.equals("3"))
